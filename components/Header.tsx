@@ -97,7 +97,7 @@ export function Header() {
       <div className="flex h-[76px] items-center justify-between gap-2 px-4">
         <div className="flex min-w-0 items-center gap-2.5">
           <div className="relative grid h-9 w-9 shrink-0 place-items-center rounded-[12px] bg-gradient-to-br from-[#f0704b] to-[#c93c1f] text-[#fff8ef] shadow-[0_8px_18px_-8px_rgba(201,60,31,0.7),inset_0_1px_0_rgba(255,255,255,0.3)]">
-            <span className="font-han text-[16px] font-semibold leading-none">夜</span>
+            <span className="font-han text-[16px] font-semibold leading-none">肆</span>
             <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-canvas bg-jade" />
           </div>
 

@@ -1,5 +1,5 @@
 -- ============================================================================
---  Night Market POS — Supabase schema + Row-Level Security
+--  肆業大排檔 · Sìyè Dàpáidàng — Supabase schema + Row-Level Security
 -- ============================================================================
 --  The client demo in /lib/data/api.ts mirrors these policies in memory.
 --  Run this in the Supabase SQL editor, then replace the mock repository
@@ -101,7 +101,7 @@ create table if not exists public.orders (
   status          text not null default 'pending'
                     check (status in ('pending', 'completed', 'cancelled')),
   payment_method  text not null
-                    check (payment_method in ('Alipay', 'WeChat Pay', 'UnionPay')),
+                    check (payment_method in ('Alipay', 'WeChat Pay', 'UnionPay', 'JD Pay')),
   total_cents     integer not null check (total_cents >= 0),
   created_at      timestamptz not null default now(),
   unique (number)
@@ -175,7 +175,7 @@ begin
     raise exception 'Not authenticated';
   end if;
 
-  if p_payment_method not in ('Alipay', 'WeChat Pay', 'UnionPay') then
+  if p_payment_method not in ('Alipay', 'WeChat Pay', 'UnionPay', 'JD Pay') then
     raise exception 'Unsupported payment method';
   end if;
 

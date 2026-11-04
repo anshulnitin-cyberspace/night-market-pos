@@ -95,7 +95,7 @@ async function main() {
   for (let index = 0; index < FAMILIES.length; index++) {
     const family = FAMILIES[index];
     const fontResponse = await fetch(remoteUrls[index], {
-      headers: { "User-Agent": "NightMarketPOS/1.0 (font subset)" },
+      headers: { "User-Agent": "SiyeDaPaiDang/1.0 (font subset)" },
     });
     if (!fontResponse.ok) {
       throw new Error(`${family.google} download failed: ${fontResponse.status}`);

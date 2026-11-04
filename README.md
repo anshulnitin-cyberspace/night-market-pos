@@ -1,6 +1,6 @@
-# Night Market POS · 夜市智慧點餐
+# 肆業大排檔 · Sìyè Dàpáidàng
 
-A mobile-first smart POS demo for a Chinese night market, meant to be opened by scanning the QR code stuck to table 07. Built with Next.js (App Router), React 19, Tailwind CSS 4 and Framer Motion.
+**The Unfinished Degree Food Stall** (also written 肆业大排档). A mobile-first smart POS demo for a dai pai dong in a Chinese night market, meant to be opened by scanning the QR code stuck to table 07. Built with Next.js (App Router), React 19, Tailwind CSS 4 and Framer Motion.
 
 The phone shell is capped at **480px** and centred with `mx-auto`, so it still reads as a handset on a desktop monitor.
 
@@ -165,9 +165,9 @@ Replace the bodies of `lib/data/api.ts` with Supabase calls and the UI/store sta
 
 ## Design notes
 
-- **Night-market palette.** Dark is the default: near-black plum canvas, ember orange accent (`#ff6b45`), jade for confirmations, warm gold for small details. Light mode flips to rice paper, ink and terracotta.
+- **Dai-pai-dong palette.** Dark is the default: near-black plum canvas, ember orange accent (`#ff6b45`), jade for confirmations, warm gold for small details. Light mode flips to rice paper, ink and terracotta.
 - **Typography.** Manrope for UI, Instrument Serif for display/italic English, locally hosted Noto Serif TC + Noto Sans TC subsets for Chinese. The pinyin lines use the serif italic.
-- **Chinese font subsetting.** Only the 322 CJK glyphs actually used by the app are downloaded (≈101 KB sans + ≈136 KB serif) instead of multi-megabyte full families. After adding Chinese copy, run `node scripts/build-fonts.cjs`: it rescans the source, downloads the new subsets into `public/fonts/`, and rewrites `app/fonts.css`.
+- **Chinese font subsetting.** Only the 321 CJK glyphs actually used by the app are downloaded (≈101 KB sans + ≈136 KB serif) instead of multi-megabyte full families. After adding Chinese copy, run `node scripts/build-fonts.cjs`: it rescans the source, downloads the new subsets into `public/fonts/`, and rewrites `app/fonts.css`.
 - **Liquid glass nav.** `backdrop-filter: blur(28px) saturate(170%)`, an inset highlight, and a Framer Motion `layoutId` pill that springs between tabs.
 - **Menu row contract.** Square image spans exactly three text lines (72 px: 24 px name line + two 20 px description lines). Chinese name + pinyin on line 1, two-line description on lines 2–3. Price is baseline-aligned with the Chinese characters; the stepper is aligned with the end of the description.
 - **Cart.** Thumbnail left, localised name with quantity directly beneath, line total right. The fixed glass footer sits above the nav.
