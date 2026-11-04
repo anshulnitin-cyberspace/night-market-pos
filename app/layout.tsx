@@ -20,13 +20,13 @@ const instrumentSerif = Instrument_Serif({
 const themeScript = `(function(){try{var t=localStorage.getItem('nm-theme');var l=localStorage.getItem('nm-language');var dark=t?t==='dark':true;if(dark){document.documentElement.classList.add('dark');}document.documentElement.style.colorScheme=dark?'dark':'light';if(l==='zh'){document.documentElement.lang='zh-Hant';}}catch(e){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}})();`;
 
 export const metadata: Metadata = {
-  title: "Night Market POS · 夜市智慧點餐",
+  title: "肆業大排檔 · Sìyè Dàpáidàng",
   description:
-    "Scan, order and pay from your phone at Dongmen Night Market. A mobile-first smart POS experience.",
-  applicationName: "Night Market POS",
+    "Scan, order and pay from your phone at 肆業大排檔 (Sìyè Dàpáidàng), the Unfinished Degree Food Stall. A mobile-first smart POS experience.",
+  applicationName: "Sìyè Dàpáidàng",
   appleWebApp: {
     capable: true,
-    title: "Night Market POS",
+    title: "肆業大排檔",
     statusBarStyle: "black-translucent",
   },
   formatDetection: { telephone: false },

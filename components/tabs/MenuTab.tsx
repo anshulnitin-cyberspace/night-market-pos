@@ -48,7 +48,7 @@ export function MenuTab() {
           aria-hidden="true"
           className="pointer-events-none absolute -right-1 -top-1 select-none font-han text-[108px] leading-none tracking-tighter text-accent/[0.07]"
         >
-          夜
+          肆
         </div>
         <div
           aria-hidden="true"
