@@ -1,5 +1,5 @@
 import { GLOSSARY } from "@/lib/data/glossary";
-import { MENU_ITEMS } from "@/lib/data/menu";
+import { MENU_DATA } from "@/lib/data/menu";
 import { menuById, mockDb, type DbCartRow } from "@/lib/data/mock-db";
 import type { CartLine, GlossaryData, MenuItem, Order, PaymentMethod } from "@/lib/types";
 
@@ -24,6 +24,8 @@ import type { CartLine, GlossaryData, MenuItem, Order, PaymentMethod } from "@/l
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
+// fake network delays. without these the skeleton loaders never show up and
+// the demo looks broken for half a second, so i added them on purpose.
 const LATENCY = {
   menu: 850,
   cart: 1_050,
@@ -72,7 +74,9 @@ function hydrateCartRow(row: DbCartRow): CartLine | null {
 
 export async function fetchMenu(): Promise<MenuItem[]> {
   await wait(LATENCY.menu);
-  return MENU_ITEMS.map((item) => ({
+  // console.log("got menu items:", MENU_DATA.length);
+
+  return MENU_DATA.map((item) => ({
     ...item,
     description: { ...item.description },
     tag: { ...item.tag },

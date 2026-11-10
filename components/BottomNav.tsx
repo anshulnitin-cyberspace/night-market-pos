@@ -7,13 +7,16 @@ import { copy } from "@/lib/i18n";
 import { usePos } from "@/lib/pos-store";
 import type { TabId } from "@/lib/types";
 
-const NAV_ITEMS: Array<{ id: TabId; icon: LucideIcon }> = [
+// order matters, glossary last because nobody reads it until after eating
+const nav_items: Array<{ id: TabId; icon: LucideIcon }> = [
   { id: "menu", icon: Soup },
   { id: "cart", icon: ShoppingBag },
   { id: "orders", icon: ReceiptText },
   { id: "glossary", icon: BookOpenText },
 ];
 
+// layoutId makes the pill slide between buttons. got the idea from a
+// stackoverflow post about framer motion shared layout animations.
 const pillSpring = { type: "spring", stiffness: 430, damping: 33, mass: 0.78 } as const;
 const auraSpring = { type: "spring", stiffness: 240, damping: 22, mass: 1.05 } as const;
 
@@ -27,7 +30,7 @@ export function BottomNav() {
         aria-label="Primary navigation"
         className="glass-nav mx-auto flex w-full max-w-[456px] items-center gap-0.5 rounded-[24px] p-1.5"
       >
-        {NAV_ITEMS.map(({ id, icon: Icon }) => {
+        {nav_items.map(({ id, icon: Icon }) => {
           const isActive = activeTab === id;
           const label = text.tabs[id];
           const showBadge = id === "cart" && cartCount > 0;

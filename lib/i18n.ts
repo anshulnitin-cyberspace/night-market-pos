@@ -1,3 +1,10 @@
+// all the words in one file because i kept hardcoding strings in components and
+// then forgetting which ones i'd already translated. yes both languages are
+// here, no there's no backend, it's a demo.
+//
+// const oldBrand = "夜市智慧點餐"; // rip, renamed the whole shop lol
+// const t = (key) => copy[lang][key]; // TODO: real i18n later maybe
+
 export const copy = {
   en: {
     brandKicker: "SÌYÈ DÀPÁIDÀNG",

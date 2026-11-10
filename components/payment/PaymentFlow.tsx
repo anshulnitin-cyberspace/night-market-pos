@@ -18,9 +18,11 @@ import { findPaymentBrand, PAYMENT_METHODS, type PaymentBrand } from "@/lib/paym
 import { usePos } from "@/lib/pos-store";
 import type { PaymentMethod } from "@/lib/types";
 
+// demo only!!! in a real app the pin would be checked on a server, not in a
+// const at the top of a client component. please don't copy this to prod.
 const ADMIN_PIN = "123456";
 const PIN_LENGTH = 6;
-const VERIFY_MS = 1_500;
+const VERIFY_MS = 1_500; // fake bank wait so the spinner has something to do
 const SUCCESS_HOLD_MS = 1_000;
 
 type View = "sheet" | "secure";
@@ -157,6 +159,9 @@ export function PaymentFlow({ open, onClose }: PaymentFlowProps) {
     pinLockedRef.current = true;
 
     const timer = window.setTimeout(() => {
+      // console.log("entered pin:", pin); // absolutely not, leaving this out
+      console.log("pin correct?", pin === ADMIN_PIN); // remove before demo lol
+
       if (pin === ADMIN_PIN) {
         haptic(18);
         setStage("processing");

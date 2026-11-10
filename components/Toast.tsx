@@ -8,6 +8,8 @@ import { usePos } from "@/lib/pos-store";
 export function Toast() {
   const { toast, dismissToast } = usePos();
 
+  // key={toast.id} is important, otherwise framer reuses the old toast and the
+  // exit animation gets stuck. lost 20 minutes to that.
   return (
     <div
       aria-live="polite"

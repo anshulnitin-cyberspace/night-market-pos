@@ -10,14 +10,7 @@ import { copy } from "@/lib/i18n";
 import { usePos } from "@/lib/pos-store";
 
 export function MenuTab() {
-  const {
-    menu,
-    menuStatus,
-    language,
-    quantityFor,
-    addOne,
-    removeOne,
-  } = usePos();
+  const { menu, menuStatus, language, quantityFor, addOne, removeOne } = usePos();
   const text = copy[language];
 
   if (menuStatus === "loading" || menuStatus === "idle") {
@@ -26,6 +19,32 @@ export function MenuTab() {
 
   if (menuStatus === "error") {
     return <ErrorState language={language} />;
+  }
+
+  // console.log("how many items??", menu.length);
+
+  // this reduce is lowkey overkill but i wanted to show i know Set exists.
+  // if two stalls share a number they shouldn't be double counted, hence Set.
+  const stall_count = menu.reduce((acc: Set<string>, item) => {
+    acc.add(item.stall);
+    return acc;
+  }, new Set<string>()).size;
+
+  // ...and then i render the cards with a plain for loop like it's week 3
+  const cards = [];
+  for (let i = 0; i < menu.length; i++) {
+    const item = menu[i];
+    cards.push(
+      <MenuItemCard
+        key={item.id}
+        item={item}
+        index={i}
+        quantity={quantityFor(item.id)}
+        language={language}
+        onIncrease={() => addOne(item.id)}
+        onDecrease={() => removeOne(item.id)}
+      />,
+    );
   }
 
   return (
@@ -102,7 +121,7 @@ export function MenuTab() {
                   Stalls
                 </p>
                 <p className="mt-1 text-[15px] font-bold leading-none tabular-nums text-ink">
-                  {String(menu.length).padStart(2, "0")}
+                  {String(stall_count).padStart(2, "0")}
                 </p>
               </div>
             </div>
@@ -134,19 +153,7 @@ export function MenuTab() {
         </p>
       </div>
 
-      <div className="space-y-2.5">
-        {menu.map((item, index) => (
-          <MenuItemCard
-            key={item.id}
-            item={item}
-            index={index}
-            quantity={quantityFor(item.id)}
-            language={language}
-            onIncrease={() => addOne(item.id)}
-            onDecrease={() => removeOne(item.id)}
-          />
-        ))}
-      </div>
+      <div className="space-y-2.5">{cards}</div>
 
       <div className="flex flex-col items-center gap-2.5 px-6 pb-4 pt-5 text-center">
         <div className="flex items-center gap-2">

@@ -1,5 +1,7 @@
 "use client";
 
+// app shell. this is basically App.jsx from the first version, just split up
+// so Next.js stops complaining about "use client" everywhere.
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import { BottomNav } from "@/components/BottomNav";
@@ -16,6 +18,20 @@ import { PosProvider, usePos } from "@/lib/pos-store";
 function ActiveTabContent() {
   const { activeTab } = usePos();
 
+  // ugh, i originally had {activeTab === "menu" && <MenuTab />} four times and
+  // then the glossary one rendered twice somehow. if/else is boring but works.
+  let screen = null;
+
+  if (activeTab === "menu") {
+    screen = <MenuTab />;
+  } else if (activeTab === "cart") {
+    screen = <CartTab />;
+  } else if (activeTab === "orders") {
+    screen = <OrdersTab />;
+  } else if (activeTab === "glossary") {
+    screen = <GlossaryTab />;
+  }
+
   return (
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
@@ -25,10 +41,7 @@ function ActiveTabContent() {
         exit={{ opacity: 0, y: -6 }}
         transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
       >
-        {activeTab === "menu" && <MenuTab />}
-        {activeTab === "cart" && <CartTab />}
-        {activeTab === "orders" && <OrdersTab />}
-        {activeTab === "glossary" && <GlossaryTab />}
+        {screen}
       </motion.div>
     </AnimatePresence>
   );
@@ -38,10 +51,16 @@ function AppFrame() {
   const { activeTab } = usePos();
   const [paymentOpen, setPaymentOpen] = useState(false);
 
-  const openPayment = useCallback(() => setPaymentOpen(true), []);
+  const openPayment = useCallback(() => {
+    // console.log("PAY BUTTON CLICKED");
+    console.log("opening payment sheet");
+    setPaymentOpen(true);
+  }, []);
+
   const closePayment = useCallback(() => setPaymentOpen(false), []);
 
   useEffect(() => {
+    console.log("tab changed ->", activeTab);
     window.scrollTo(0, 0);
   }, [activeTab]);
 

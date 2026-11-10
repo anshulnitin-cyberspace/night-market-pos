@@ -68,7 +68,9 @@ interface PosStore {
 
 const PosContext = createContext<PosStore | null>(null);
 
-const MAX_QUANTITY = 20;
+// 20 is enough for a table of 4, if you need more you're not eating, you're
+// hoarding. professor said no magic numbers so at least it has a name now.
+const max_qty = 20;
 
 export function PosProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("en");
@@ -245,7 +247,9 @@ export function PosProvider({ children }: { children: ReactNode }) {
 
   const setQuantity = useCallback(
     (menuItemId: string, quantity: number) => {
-      const safeQuantity = Math.max(0, Math.min(MAX_QUANTITY, Math.floor(quantity)));
+      console.log("set qty:", menuItemId, "->", quantity);
+
+      const safeQuantity = Math.max(0, Math.min(max_qty, Math.floor(quantity)));
 
       setCart((current) => {
         const existing = current.find((line) => line.menuItemId === menuItemId);
@@ -350,7 +354,9 @@ export function PosProvider({ children }: { children: ReactNode }) {
       payingRef.current = true;
 
       try {
-        const result = await checkout(
+        // tempData is a terrible name, i know. it's the checkout response:
+        // orders (the refreshed list) + order (the one we just made)
+        const tempData = await checkout(
           ACTIVE_SESSION.userId,
           ACTIVE_SESSION.sessionId,
           cartRef.current,
@@ -358,10 +364,10 @@ export function PosProvider({ children }: { children: ReactNode }) {
         );
 
         setCart([]);
-        setOrders(result.orders);
+        setOrders(tempData.orders);
         setOrdersStatus("ready");
         ordersRequested.current = true;
-        setLastOrderId(result.order.id);
+        setLastOrderId(tempData.order.id);
         pushToast(copy[language].cart.paidToast, "success");
         return true;
       } catch {

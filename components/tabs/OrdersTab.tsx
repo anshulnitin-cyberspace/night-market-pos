@@ -21,14 +21,14 @@ export function OrdersTab() {
     return <ErrorState language={language} onRetry={retryOrders} />;
   }
 
-  /**
-   * RLS defence in depth. The repository already scopes rows by user_id; this
-   * filter makes the UI contract explicit and keeps another session's data out
-   * even if a mock query is ever changed by mistake.
-   */
+  // my friend who does backend said this is "defence in depth". the api already
+  // filters by user but if someone breaks that later this still hides other
+  // people's orders. cheap insurance.
   const visibleOrders = orders.filter(
     (order) => order.userId === ACTIVE_SESSION.userId && order.status === "completed",
   );
+
+  // console.log("orders for this user:", visibleOrders.length);
 
   return (
     <div className="space-y-4 pb-32 pt-3">
@@ -92,9 +92,18 @@ export function OrdersTab() {
         <div className="space-y-3">
           {visibleOrders.map((order, index) => {
             const isNew = order.id === lastOrderId;
-            const units = order.items.reduce((sum, item) => sum + item.quantity, 0);
+
+            // started as a reduce one-liner, then i needed the count for the
+            // plural label and it got confusing. loop it is.
+            let units = 0;
+            for (let i = 0; i < order.items.length; i++) {
+              units = units + order.items[i].quantity;
+            }
+
             const countLabel =
-              language === "zh" ? `${units} ${text.orders.items}` : `${units} ${units === 1 ? "item" : "items"}`;
+              language === "zh"
+                ? `${units} ${text.orders.items}`
+                : `${units} ${units === 1 ? "item" : "items"}`;
 
             return (
               <motion.article

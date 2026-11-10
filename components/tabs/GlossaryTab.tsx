@@ -155,6 +155,8 @@ export function GlossaryTab() {
     return <ErrorState language={language} onRetry={retryGlossary} />;
   }
 
+  // three sections, hardcoded because the glossary data is also hardcoded.
+  // TODO: if we ever add a fourth section this breaks. future me problem.
   const sections = [
     {
       key: "food" as const,

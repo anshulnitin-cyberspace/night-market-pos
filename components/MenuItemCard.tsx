@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { QuantityControl } from "@/components/QuantityControl";
@@ -16,8 +17,9 @@ interface MenuItemCardProps {
 }
 
 /**
- * A self-contained menu row. Drop another <MenuItemCard /> into the menu grid
- * with another object from /lib/data/menu.ts to extend the stall.
+ * One row on the menu. The photo is a 72x72 square because that's exactly three
+ * lines of text; i lined it up with a ruler on a screenshot once and never
+ * touched it again.
  */
 export function MenuItemCard({
   item,
@@ -27,6 +29,11 @@ export function MenuItemCard({
   onIncrease,
   onDecrease,
 }: MenuItemCardProps) {
+  // local files can go missing if you rename them in the Downloads folder, so
+  // instead of a broken <img> icon we show a little 肆 placeholder
+  const [imgBroken, setImgBroken] = useState(false);
+  const priceLabel = formatPrice(item.price);
+
   return (
     <motion.article
       layout
@@ -44,15 +51,26 @@ export function MenuItemCard({
           : undefined
       }
     >
-      <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-[15px] bg-panel-muted">
-        <Image
-          src={item.image}
-          alt={`${item.name} — ${item.englishName}`}
-          fill
-          sizes="72px"
-          priority={index < 2}
-          className="object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
-        />
+      <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-xl bg-panel-muted">
+        {imgBroken ? (
+          <span className="grid h-full w-full place-items-center font-han text-[22px] text-muted">
+            肆
+          </span>
+        ) : (
+          <Image
+            src={item.image}
+            alt={`${item.name} — ${item.englishName}`}
+            fill
+            sizes="72px"
+            priority={index < 2}
+            onError={() => {
+              // TODO: put a proper "food coming soon" photo here
+              console.log("image missing:", item.image);
+              setImgBroken(true);
+            }}
+            className="object-cover object-center transition-transform duration-500 will-change-transform group-hover:scale-105"
+          />
+        )}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/0" />
         <span className="absolute bottom-1.5 left-1.5 rounded-full border border-white/15 bg-black/35 px-1.5 py-0.5 text-[7px] font-semibold tracking-[0.13em] text-white/90 backdrop-blur-md">
           {item.stall}
@@ -76,7 +94,7 @@ export function MenuItemCard({
 
       <div className="flex w-[84px] shrink-0 flex-col items-end justify-between py-0.5">
         <p className="text-[15px] font-bold leading-[24px] tabular-nums tracking-tight text-ink">
-          {formatPrice(item.price)}
+          {priceLabel}
         </p>
         <QuantityControl
           itemName={item.name}

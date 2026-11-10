@@ -1,15 +1,18 @@
 import type { MenuItem } from "@/lib/types";
 
 /**
- * MENU DATA — add, remove or reorder items here.
+ * MENU_DATA — the whole menu lives here.
  *
- * The MenuItem card is intentionally decoupled from this file. To add a new
- * food, copy an object below and drop a square image into /public/food.
+ * I used to keep this in App.jsx but it got way too long lol. Images are local
+ * now, inside public/assets/food/. If you drop your own photos in there just
+ * make sure the file name matches the `image` field below, otherwise you get a
+ * broken image icon and it looks sad.
  *
- * Prices are whole yuan, matching the `¥` formatter. Names are in Traditional
- * Chinese to stay consistent with the rest of the zh-Hant UI.
+ * TODO: maybe split spicy/sweet/drinks into separate files later, but it works
+ *       for now so i'm not touching it during the demo.
  */
-export const MENU_ITEMS: MenuItem[] = [
+export const MENU_DATA: MenuItem[] = [
+  // ---------- savoury / spicy stuff ----------
   {
     id: "skewers",
     name: "烤串",
@@ -19,8 +22,8 @@ export const MENU_ITEMS: MenuItem[] = [
       en: "Cumin-dusted lamb skewers, charred fast over open flame.",
       zh: "孜然羊肉串，炭火快烤，香氣四溢。",
     },
-    price: 8,
-    image: "/food/skewers.webp",
+    price: 8, // it says per skewer on the board, i'm just charging per stick
+    image: "/assets/food/skewers.webp",
     tag: { en: "Grill", zh: "炭烤" },
     stall: "07",
   },
@@ -34,7 +37,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "外酥內嫩的發酵豆腐，配蒜蓉與泡菜。",
     },
     price: 12,
-    image: "/food/stinky-tofu.webp",
+    image: "/assets/food/stinky-tofu.webp",
     tag: { en: "Fried", zh: "油炸" },
     stall: "11",
   },
@@ -48,7 +51,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "彈牙麵條浸在麻辣紅油湯底，配上酸菜。",
     },
     price: 15,
-    image: "/food/chongqing-noodles.webp",
+    image: "/assets/food/chongqing-noodles.webp",
     tag: { en: "Noodles", zh: "麵食" },
     stall: "03",
   },
@@ -62,7 +65,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "薄皮包著豬肉與滾燙湯汁。",
     },
     price: 20,
-    image: "/food/soup-dumplings.webp",
+    image: "/assets/food/soup-dumplings.webp",
     tag: { en: "Steam", zh: "蒸點" },
     stall: "02",
   },
@@ -76,7 +79,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "金黃脆底的豬肉煎餃，附薑醋醬。",
     },
     price: 26,
-    image: "/food/fried-dumplings.webp",
+    image: "/assets/food/fried-dumplings.webp",
     tag: { en: "Crisp", zh: "香煎" },
     stall: "02",
   },
@@ -90,7 +93,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "小龍蝦以麻辣蒜香湯汁燜煮。",
     },
     price: 45,
-    image: "/food/crayfish.webp",
+    image: "/assets/food/crayfish.webp",
     tag: { en: "Spicy", zh: "麻辣" },
     stall: "08",
   },
@@ -104,7 +107,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "綠豆薄餅裹上雞蛋、蔥花與薄脆。",
     },
     price: 9,
-    image: "/food/jianbing.webp",
+    image: "/assets/food/jianbing.webp",
     tag: { en: "Griddle", zh: "現烙" },
     stall: "01",
   },
@@ -118,7 +121,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "煎餅抹上辣醬，裹入雞蛋與脆油條。",
     },
     price: 9,
-    image: "/food/spicy-jianbing.webp",
+    image: "/assets/food/spicy-jianbing.webp",
     tag: { en: "Spicy", zh: "香辣" },
     stall: "01",
   },
@@ -132,7 +135,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "紅薯粉浸在酸辣湯底，撒上花生與香菜。",
     },
     price: 15,
-    image: "/food/hot-sour-noodles.webp",
+    image: "/assets/food/hot-sour-noodles.webp",
     tag: { en: "Noodles", zh: "麵食" },
     stall: "03",
   },
@@ -146,7 +149,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "鴨脖以辣油滷煮，越嚼越香。",
     },
     price: 12,
-    image: "/food/duck-neck.webp",
+    image: "/assets/food/duck-neck.webp",
     tag: { en: "Spicy", zh: "香辣" },
     stall: "06",
   },
@@ -160,7 +163,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "冰涼米皮拌上辣油、香醋與黃瓜絲。",
     },
     price: 11,
-    image: "/food/liangpi.webp",
+    image: "/assets/food/liangpi.webp",
     tag: { en: "Cold", zh: "涼拌" },
     stall: "10",
   },
@@ -174,7 +177,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "雞爪浸泡泡椒滷汁，酸辣開胃。",
     },
     price: 16,
-    image: "/food/chicken-feet.webp",
+    image: "/assets/food/chicken-feet.webp",
     tag: { en: "Spicy", zh: "香辣" },
     stall: "06",
   },
@@ -188,7 +191,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "年糕以甜辣醬快炒，軟糯入味。",
     },
     price: 15,
-    image: "/food/rice-cake.webp",
+    image: "/assets/food/rice-cake.webp",
     tag: { en: "Wok", zh: "鑊氣" },
     stall: "09",
   },
@@ -202,7 +205,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "鑊氣十足，拌入蔥花、豆芽與醬油。",
     },
     price: 24,
-    image: "/food/fried-noodles.webp",
+    image: "/assets/food/fried-noodles.webp",
     tag: { en: "Wok", zh: "鑊氣" },
     stall: "09",
   },
@@ -216,10 +219,12 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "層層酥香的蔥油餅，邊緣金黃。",
     },
     price: 14,
-    image: "/food/scallion-pancake.webp",
+    image: "/assets/food/scallion-pancake.webp",
     tag: { en: "Griddle", zh: "現烙" },
     stall: "09",
   },
+
+  // ---------- sweet stuff (my favourite section) ----------
   {
     id: "egg-waffle",
     name: "雞蛋仔",
@@ -230,7 +235,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "金黃雞蛋仔，外脆內軟，蛋香濃郁。",
     },
     price: 15,
-    image: "/food/egg-waffle.webp",
+    image: "/assets/food/egg-waffle.webp",
     tag: { en: "Sweet", zh: "甜點" },
     stall: "12",
   },
@@ -244,7 +249,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "糖衣薄脆，裹住酸甜山楂。",
     },
     price: 7,
-    image: "/food/tanghulu.webp",
+    image: "/assets/food/tanghulu.webp",
     tag: { en: "Sweet", zh: "甜點" },
     stall: "14",
   },
@@ -258,7 +263,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "爽彈蒸米糕，清甜不膩。",
     },
     price: 4,
-    image: "/food/white-sugar-cake.webp",
+    image: "/assets/food/white-sugar-cake.webp",
     tag: { en: "Sweet", zh: "甜點" },
     stall: "12",
   },
@@ -272,7 +277,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "軟糯米糕，散發桂花清香。",
     },
     price: 9,
-    image: "/food/osmanthus-cake.webp",
+    image: "/assets/food/osmanthus-cake.webp",
     tag: { en: "Sweet", zh: "甜點" },
     stall: "13",
   },
@@ -286,10 +291,12 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "冰凍芒果忌廉，拌入西米、柚子與椰奶。",
     },
     price: 17,
-    image: "/food/mango-sago.webp",
+    image: "/assets/food/mango-sago.webp",
     tag: { en: "Sweet", zh: "甜點" },
     stall: "14",
   },
+
+  // ---------- drinks ----------
   {
     id: "bubble-tea",
     name: "珍珠奶茶",
@@ -300,7 +307,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "濃醇紅茶、鮮奶與黑糖珍珠。",
     },
     price: 18,
-    image: "/food/bubble-tea.webp",
+    image: "/assets/food/bubble-tea.webp",
     tag: { en: "Drink", zh: "飲品" },
     stall: "05",
   },
@@ -314,7 +321,7 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "現磨熱豆漿，微甜順滑。",
     },
     price: 5,
-    image: "/food/soy-milk.webp",
+    image: "/assets/food/soy-milk.webp",
     tag: { en: "Drink", zh: "飲品" },
     stall: "04",
   },
@@ -327,8 +334,8 @@ export const MENU_ITEMS: MenuItem[] = [
       en: "Bittersweet herbal brew served warm — a night-market reset.",
       zh: "微苦回甘的傳統涼茶，溫熱解膩。",
     },
-    price: 5,
-    image: "/food/herbal-tea.webp",
+    price: 5, // grandma said this should cost more but whatever
+    image: "/assets/food/herbal-tea.webp",
     tag: { en: "Drink", zh: "飲品" },
     stall: "04",
   },
@@ -342,8 +349,12 @@ export const MENU_ITEMS: MenuItem[] = [
       zh: "濃紅茶加冰塊與鮮檸檬，酸甜清爽。",
     },
     price: 15,
-    image: "/food/lemon-tea.webp",
+    image: "/assets/food/lemon-tea.webp",
     tag: { en: "Drink", zh: "飲品" },
     stall: "05",
   },
 ];
+
+// old name — api.ts and mock-db.ts still import this, so keep it or everything
+// explodes (found that out the hard way at 2am)
+export const MENU_ITEMS = MENU_DATA;

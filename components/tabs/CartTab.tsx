@@ -10,14 +10,7 @@ import { copy } from "@/lib/i18n";
 import { usePos } from "@/lib/pos-store";
 
 export function CartTab() {
-  const {
-    cart,
-    cartStatus,
-    cartCount,
-    language,
-    clearCart,
-    setTab,
-  } = usePos();
+  const { cart, cartStatus, cartCount, language, clearCart, setTab } = usePos();
   const text = copy[language];
 
   if (cartStatus === "loading" || cartStatus === "idle") {
@@ -28,10 +21,18 @@ export function CartTab() {
     return <ErrorState language={language} />;
   }
 
-  const itemCount =
-    language === "zh"
-      ? `${cartCount} ${text.cart.items}`
-      : `${cartCount} ${cartCount === 1 ? "item" : "items"}`;
+  // console.log("cart on this render:", cart);
+
+  // i had this as a nested ternary and my tutor said "that's unreadable".
+  // jokes on him, now it's an if/else and it's longer.
+  let itemCount: string;
+  if (language === "zh") {
+    itemCount = cartCount + " " + text.cart.items;
+  } else if (cartCount === 1) {
+    itemCount = cartCount + " item";
+  } else {
+    itemCount = cartCount + " items";
+  }
 
   if (cart.length === 0) {
     return (
@@ -112,7 +113,9 @@ export function CartTab() {
       <div className="mt-4 overflow-hidden rounded-[24px] border border-line bg-panel px-4 shadow-card">
         <AnimatePresence initial={false}>
           {cart.map((line) => {
-            const displayName = language === "zh" ? line.name : line.englishName;
+            const shownName = language === "zh" ? line.name : line.englishName;
+            const val = line.unitPrice * line.quantity; // keep it simple
+
             return (
               <motion.div
                 key={line.menuItemId}
@@ -123,13 +126,13 @@ export function CartTab() {
                 transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                 className="flex items-center gap-3 border-b border-line py-3.5 last:border-0"
               >
-                <div className="relative h-[54px] w-[54px] shrink-0 overflow-hidden rounded-[14px] bg-panel-muted">
+                <div className="relative h-[54px] w-[54px] shrink-0 overflow-hidden rounded-xl bg-panel-muted">
                   <Image
                     src={line.image}
-                    alt={displayName}
+                    alt={shownName}
                     fill
                     sizes="54px"
-                    className="object-cover"
+                    className="h-full w-full object-cover object-center"
                   />
                 </div>
 
@@ -141,7 +144,7 @@ export function CartTab() {
                         : "truncate text-[13px] font-semibold text-ink"
                     }
                   >
-                    {displayName}
+                    {shownName}
                   </p>
                   <p className="mt-1 text-[10px] font-medium tabular-nums text-muted">
                     × {line.quantity}
@@ -149,7 +152,7 @@ export function CartTab() {
                 </div>
 
                 <p className="shrink-0 text-[14px] font-semibold tabular-nums text-ink">
-                  {formatPrice(line.unitPrice * line.quantity)}
+                  {formatPrice(val)}
                 </p>
               </motion.div>
             );

@@ -51,7 +51,16 @@ function ThemeSwitch() {
   const { theme, toggleTheme, language } = usePos();
   const isDark = theme === "dark";
   const text = copy[language];
-  const label = isDark ? text.themeLabel : text.themeLabelDark;
+
+  // was a ternary before but i kept reading it backwards so now it's explicit
+  let label: string;
+  if (isDark) {
+    label = text.themeLabel;
+  } else {
+    label = text.themeLabelDark;
+  }
+
+  // console.log("theme =", theme, "label =", label);
 
   return (
     <button

@@ -19,10 +19,17 @@ export function CartFooter({ onPay }: { onPay: () => void }) {
   if (activeTab !== "cart" || cartStatus !== "ready" || cart.length === 0) return null;
 
   const text = copy[language];
-  const itemCount =
-    language === "zh"
-      ? `${cartCount} ${text.cart.items}`
-      : `${cartCount} ${cartCount === 1 ? "item" : "items"}`;
+
+  // same plural logic as the cart tab. i could've exported a helper but then
+  // i'd have to import it in two files so whatever
+  let itemCount: string;
+  if (language === "zh") {
+    itemCount = `${cartCount} ${text.cart.items}`;
+  } else if (cartCount === 1) {
+    itemCount = `${cartCount} item`;
+  } else {
+    itemCount = `${cartCount} items`;
+  }
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+92px)] z-40 px-3">
