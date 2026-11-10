@@ -103,18 +103,18 @@ export function Header() {
 
   return (
     <header className="header-blur sticky top-0 z-40 border-b border-line/70">
-      <div className="flex h-[76px] items-center justify-between gap-2 px-4">
-        <div className="flex min-w-0 items-center gap-2.5">
+      <div className="flex h-[76px] items-center gap-2 px-4">
+        <div className="flex min-w-0 flex-1 items-center gap-2.5">
           <div className="relative grid h-9 w-9 shrink-0 place-items-center rounded-[12px] bg-gradient-to-br from-[#f0704b] to-[#c93c1f] text-[#fff8ef] shadow-[0_8px_18px_-8px_rgba(201,60,31,0.7),inset_0_1px_0_rgba(255,255,255,0.3)]">
             <span className="font-han text-[16px] font-semibold leading-none">肆</span>
             <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-canvas bg-jade" />
           </div>
 
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <p className="truncate text-[7.5px] font-bold tracking-[0.24em] text-muted">
               {text.brandKicker}
             </p>
-            <div className="relative mt-0.5 h-[27px] overflow-hidden">
+            <div className="relative mt-0.5 h-[27px] w-full overflow-hidden">
               <AnimatePresence mode="popLayout" initial={false}>
                 <motion.h1
                   key={`${activeTab}-${language}`}
@@ -123,10 +123,10 @@ export function Header() {
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                   className={cn(
-                    "absolute inset-0 whitespace-nowrap leading-[27px] text-ink",
+                    "absolute inset-0 truncate whitespace-nowrap leading-[27px] text-ink",
                     language === "zh"
                       ? "font-han text-[22px] font-semibold tracking-[0.08em]"
-                      : "text-[20px] font-extrabold tracking-[0.16em]",
+                      : "text-[20px] font-extrabold tracking-[0.16em] max-[350px]:text-[18px] max-[350px]:tracking-[0.08em]",
                   )}
                 >
                   {label}

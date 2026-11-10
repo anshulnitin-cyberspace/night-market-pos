@@ -6,18 +6,37 @@ import type { GlossaryData, GlossaryEntry } from "@/lib/types";
  */
 
 export const CHINESE_FOOD: GlossaryEntry[] = [
-  { id: "food-1", hanzi: "小籠包", pinyin: "xiǎo lóng bāo", en: "Soup dumplings" },
-  { id: "food-2", hanzi: "臭豆腐", pinyin: "chòu dòu fu", en: "Stinky tofu" },
-  { id: "food-3", hanzi: "烤串", pinyin: "kǎo chuàn", en: "Grilled skewers" },
-  { id: "food-4", hanzi: "珍珠奶茶", pinyin: "zhēn zhū nǎi chá", en: "Bubble tea" },
+  { id: "food-1", hanzi: "小籠包", pinyin: "xiǎo lóng bāo", en: "Xiaolongbao (Soup Dumplings)" },
+  { id: "food-2", hanzi: "臭豆腐", pinyin: "chòu dòu fu", en: "Stinky Tofu" },
+  { id: "food-3", hanzi: "烤串", pinyin: "kǎo chuàn", en: "Chuan'r (Grilled Lamb Skewers)" },
+  { id: "food-4", hanzi: "珍珠奶茶", pinyin: "zhēn zhū nǎi chá", en: "Bubble Milk Tea" },
   { id: "food-5", hanzi: "蔥油餅", pinyin: "cōng yóu bǐng", en: "Scallion pancake" },
-  { id: "food-6", hanzi: "糖葫蘆", pinyin: "táng hú lu", en: "Candied hawthorn" },
+  { id: "food-6", hanzi: "糖葫蘆", pinyin: "táng hú lu", en: "Tanghulu (Candied Fruit Skewer)" },
   { id: "food-7", hanzi: "炒麵", pinyin: "chǎo miàn", en: "Fried noodles" },
   { id: "food-8", hanzi: "煎餃", pinyin: "jiān jiǎo", en: "Pan-fried dumplings" },
   { id: "food-9", hanzi: "滷肉飯", pinyin: "lǔ ròu fàn", en: "Braised pork rice" },
   { id: "food-10", hanzi: "大腸包小腸", pinyin: "dà cháng bāo xiǎo cháng", en: "Sausage in sticky rice" },
   { id: "food-11", hanzi: "蚵仔煎", pinyin: "é zǐ jiān", en: "Oyster omelette" },
   { id: "food-12", hanzi: "芒果冰", pinyin: "máng guǒ bīng", en: "Mango shaved ice" },
+
+  // added these when the menu grew to 24 dishes.
+  // TODO: keep in sync with lib/data/menu.ts, i keep forgetting one -_-
+  { id: "food-13", hanzi: "重慶小麵", pinyin: "chóng qìng xiǎo miàn", en: "Chongqing Spicy Noodles" },
+  { id: "food-14", hanzi: "小龍蝦", pinyin: "xiǎo lóng xiā", en: "Spicy Crayfish" },
+  { id: "food-15", hanzi: "煎餅", pinyin: "jiān bǐng", en: "Chinese Crepe" },
+  { id: "food-16", hanzi: "辣味煎餅果子", pinyin: "là wèi jiān bǐng guǒ zi", en: "Spicy Crispy Crepe (Jianbing)" },
+  { id: "food-17", hanzi: "酸辣粉", pinyin: "suān là fěn", en: "Hot and Sour Rice Noodles" },
+  { id: "food-18", hanzi: "辣鴨脖", pinyin: "là yā bó", en: "Spicy Duck Neck" },
+  { id: "food-19", hanzi: "涼皮", pinyin: "liáng pí", en: "Sichuan Cold Rice Noodles" },
+  { id: "food-20", hanzi: "泡椒鳳爪", pinyin: "pào jiāo fèng zhuǎ", en: "Spicy Chicken Feet" },
+  { id: "food-21", hanzi: "炒年糕", pinyin: "chǎo nián gāo", en: "Spicy Pan-Fried Rice Cake" },
+  { id: "food-22", hanzi: "雞蛋仔", pinyin: "jī dàn zǎi", en: "Egg Waffle (Bubble Waffle)" },
+  { id: "food-23", hanzi: "白糖糕", pinyin: "bái táng gāo", en: "White Sugar Cake" },
+  { id: "food-24", hanzi: "桂花糕", pinyin: "guì huā gāo", en: "Osmanthus Rice Cake" },
+  { id: "food-25", hanzi: "楊枝甘露", pinyin: "yáng zhī gān lù", en: "Mango Sago Cream" },
+  { id: "food-26", hanzi: "豆漿", pinyin: "dòu jiāng", en: "Fresh Soy Milk" },
+  { id: "food-27", hanzi: "涼茶", pinyin: "liáng chá", en: "Traditional Herbal Tea" },
+  { id: "food-28", hanzi: "檸檬茶", pinyin: "níng méng chá", en: "Lemon Tea" },
 ];
 
 export const COMMON_WORDS: GlossaryEntry[] = [
