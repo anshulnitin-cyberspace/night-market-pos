@@ -26,7 +26,7 @@ npm start
 1. Push the folder to a Git repository.
 2. Import it in Vercel — the framework preset is detected as Next.js.
 3. No environment variables are required for the demo.
-4. Deploy. `public/assets/food/*.webp` and `public/fonts/*.woff2` are served as static assets.
+4. Deploy. `public/assets/food/*.jpg` and `public/fonts/*.woff2` are served as static assets.
 
 ---
 
@@ -180,4 +180,4 @@ Replace the bodies of `lib/data/api.ts` with Supabase calls and the UI/store sta
 
 ## Image credits
 
-Food photography is sourced from Wikimedia Commons and cropped to 560 × 560 WebP. Full attribution is in [`public/assets/food/CREDITS.md`](public/assets/food/CREDITS.md).
+Dish photography lives in [`public/assets/food/`](public/assets/food/) as `.jpg`, one file per menu item id. See [`CREDITS.md`](public/assets/food/CREDITS.md) for the source note.
