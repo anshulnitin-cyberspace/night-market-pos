@@ -1,5 +1,5 @@
 -- ============================================================================
---  肆業大排檔 · Sìyè Dàpáidàng — Supabase schema + Row-Level Security
+--  肄業大排檔 · Yìyè Dàpáidàng — Supabase schema + Row-Level Security
 -- ============================================================================
 --  The client demo in /lib/data/api.ts mirrors these policies in memory.
 --  Run this in the Supabase SQL editor, then replace the mock repository

@@ -1,6 +1,6 @@
-# 肆業大排檔 · Yìyè Dàpáidàng
+# 肄業大排檔 · Yìyè Dàpáidàng
 
-**The Unfinished Degree Food Stall** (also written 肆业大排档). A mobile-first smart POS demo for a dai pai dong in a Chinese night market, meant to be opened by scanning the QR code stuck to table 07. Built with Next.js (App Router), React 19, Tailwind CSS 4 and Framer Motion.
+**The Unfinished Degree Food Stall** (also written 肄业大排档). A mobile-first smart POS demo for a dai pai dong in a Chinese night market, meant to be opened by scanning the QR code stuck to table 07. Built with Next.js (App Router), React 19, Tailwind CSS 4 and Framer Motion.
 
 The phone shell is capped at **480px** and centred with `mx-auto`, so it still reads as a handset on a desktop monitor.
 

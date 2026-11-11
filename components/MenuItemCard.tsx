@@ -30,7 +30,7 @@ export function MenuItemCard({
   onDecrease,
 }: MenuItemCardProps) {
   // local files can go missing if you rename them in the Downloads folder, so
-  // instead of a broken <img> icon we show a little 肆 placeholder
+  // instead of a broken <img> icon we show a little 肄 placeholder
   const [imgBroken, setImgBroken] = useState(false);
   const priceLabel = formatPrice(item.price);
 
@@ -54,7 +54,7 @@ export function MenuItemCard({
       <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-xl bg-panel-muted">
         {imgBroken ? (
           <span className="grid h-full w-full place-items-center font-han text-[22px] text-muted">
-            肆
+            肄
           </span>
         ) : (
           <Image

@@ -20,13 +20,13 @@ const instrumentSerif = Instrument_Serif({
 const themeScript = `(function(){try{var t=localStorage.getItem('nm-theme');var l=localStorage.getItem('nm-language');var dark=t?t==='dark':true;if(dark){document.documentElement.classList.add('dark');}document.documentElement.style.colorScheme=dark?'dark':'light';if(l==='zh'){document.documentElement.lang='zh-Hant';}}catch(e){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}})();`;
 
 export const metadata: Metadata = {
-  title: "肆業大排檔 · Sìyè Dàpáidàng",
+  title: "肄業大排檔 · Yìyè Dàpáidàng",
   description:
-    "Scan, order and pay from your phone at 肆業大排檔 (Sìyè Dàpáidàng), the Unfinished Degree Food Stall. A mobile-first smart POS experience.",
-  applicationName: "Sìyè Dàpáidàng",
+    "Scan, order and pay from your phone at 肄業大排檔 (Yìyè Dàpáidàng), the Unfinished Degree Food Stall. A mobile-first smart POS experience.",
+  applicationName: "Yìyè Dàpáidàng",
   appleWebApp: {
     capable: true,
-    title: "肆業大排檔",
+    title: "肄業大排檔",
     statusBarStyle: "black-translucent",
   },
   formatDetection: { telephone: false },
