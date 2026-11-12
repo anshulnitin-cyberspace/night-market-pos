@@ -353,6 +353,20 @@ export const MENU_DATA: MenuItem[] = [
     tag: { en: "Drink", zh: "飲品" },
     stall: "05",
   },
+  {
+    id: "chi",
+    name: "吃",
+    pinyin: "chī",
+    englishName: "Chi",
+    description: {
+      en: "To eat",
+      zh: "to eat",
+    },
+    price: 0,
+    image: "/assets/food/lemon-tea.jpg",
+    tag: { en: "Drink", zh: "飲品" },
+    stall: "00",
+  }
 ];
 
 // old name — api.ts and mock-db.ts still import this, so keep it or everything
